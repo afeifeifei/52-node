@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="Author" content="阿飞飞">
+    <style>
+        *{margin:0;padding:0;font-family:"Microsoft YaHei",serif;}
+        ul,li,dl,dt,ol{list-style-type:none;}
+
+        #wrap,#main{
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrap">wrap</div>
+    <div id="main">main</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script>
+
+        $("#wrap").click(function(){
+
+            $.ajax({
+                method : "GET",
+                url : "http://localhost:5689/goudan",
+                data : {user:"abcdefg",pwd:"123456"},
+                success(msg){
+                    console.log(msg);
+                }
+            });
+
+        });
+
+        $("#main").click(function(){
+
+            $.ajax({
+                method : "POST",
+                url : "http://localhost:5689/goudan",
+                data : {user:"ggggg",pwd:"88888"},
+                success(msg){
+                    console.log(msg);
+                }
+            });
+
+        });
+
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
