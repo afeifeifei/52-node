@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
 app.get("/main",(req,res)=>{
     req.goudan = "狗蛋";
 
-    res.send(req.goudan + " 访问了 /main 路由") ;
+    res.send(req.goudan + " 访问了 /main 路由");
 });
 
 
