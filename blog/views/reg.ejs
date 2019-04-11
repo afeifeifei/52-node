@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="Author" content="阿飞飞">
+    <meta name="keywords" content="阿飞 博客 个人博客 web前端">
+    <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.js"></script>
+</head>
+<body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码框</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">6-12位数</div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="submit" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script>
+
+    /*
+    推荐使用Layui自己的js代码来操作表单
+
+    由于我们还没接触过学习过layui，所以课程中我们使用jQuery来操作
+     */
+
+    (function(){
+
+        let $user = $(".layui-input-inline input[name=username]"),
+            $password = $('.layui-input-inline input[name=password]'),
+            $submit = $("#submit"),
+            $reset = $("#reset")
+        ;
+
+        console.log($user);
+        console.log($password);
+        console.log($submit);
+        console.log($reset);
+
+
+    })();
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

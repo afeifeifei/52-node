@@ -1,0 +1,293 @@
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 1920px;
+  min-width: 1000px;
+  margin: 0 auto;
+  user-select: none;
+}
+/*bg*/
+#bg {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  min-width: 1200px;
+  background: url("../images/bg/3.png") no-repeat center center / cover;
+}
+#bg #bg-canvas {
+  display: block;
+  background-color: transparent;
+}
+/*menu*/
+#menu {
+  overflow: hidden;
+  position: fixed;
+  z-index: 999;
+  top: 50px;
+  right: 50px;
+  width: 30px;
+  height: 29px;
+  transition: width 0.3s;
+}
+#menu .menu-switch {
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 29px;
+  cursor: pointer;
+}
+#menu .menu-switch .line {
+  position: absolute;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #000000;
+  transform-origin: left top;
+  transform: rotate(0);
+  transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
+}
+#menu .menu-switch .line1 {
+  top: 0;
+}
+#menu .menu-switch .line2 {
+  top: 13px;
+}
+#menu .menu-switch .line3 {
+  bottom: 0;
+}
+#menu .menu-main {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 0.3s;
+}
+#menu .menu-main ul {
+  width: 500px;
+  height: 100%;
+}
+#menu .menu-main ul li {
+  float: left;
+  font-size: 18px;
+  line-height: 29px;
+}
+#menu .menu-main ul li a {
+  display: block;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.7);
+  transition: 0.2s;
+}
+#menu .menu-main ul li a:hover {
+  font-weight: bold;
+  color: #000000;
+}
+#menu.show {
+  width: 330px;
+}
+#menu.show .menu-switch .line {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#menu.show .menu-switch .line1 {
+  transform: rotate(45deg);
+}
+#menu.show .menu-switch .line2 {
+  opacity: 0;
+}
+#menu.show .menu-switch .line3 {
+  transform: rotate(-45deg);
+}
+#menu.show .menu-main {
+  width: 300px;
+}
+/*blogger*/
+#blogger {
+  width: 130px;
+  height: 130px;
+  padding-top: 90px;
+  margin: 0 auto;
+}
+#blogger .pic {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: url("/images/bg/3.png") center center / cover;
+}
+#blogger .pic a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#blogger .name {
+  font-weight: bolder;
+  color: #000000;
+  text-align: center;
+}
+/*decorate*/
+#decorate {
+  position: relative;
+  top: 1px;
+  width: 100%;
+  height: 200px;
+  margin-top: -60px;
+}
+#decorate svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/*content*/
+#content {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.97) 5%, rgba(255, 255, 255, 0.97) 95%, rgba(255, 255, 255, 0.8) 100%);
+}
+#content .content-main {
+  position: relative;
+  width: 1000px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+#content .content-main ul.content-main-left {
+  width: 100%;
+}
+#content .content-main ul.content-main-left li {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  margin: 0 auto 200px;
+  background-color: #fff;
+  transition: box-shadow 0.3s, top 0.3s;
+}
+#content .content-main ul.content-main-left li .pic {
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  top: -50px;
+  left: 50px;
+  width: 150px;
+  height: 180px;
+  border-radius: 8px;
+}
+#content .content-main ul.content-main-left li .title {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+#content .content-main ul.content-main-left li .title .t-bg {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.6) 80%, #ffffff 100%);
+}
+#content .content-main ul.content-main-left li .title .t {
+  position: relative;
+  z-index: 2;
+  margin: 7px 0 7px 250px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #999;
+}
+#content .content-main ul.content-main-left li .title .t-1 {
+  padding-top: 15px;
+  font-size: 22px;
+  font-weight: bolder;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#content .content-main ul.content-main-left li .title .t-1 a {
+  color: #fff;
+  transition: color 0.2s;
+}
+#content .content-main ul.content-main-left li .title .t-1 a:hover {
+  color: #ddd;
+}
+#content .content-main ul.content-main-left li .article {
+  position: relative;
+  width: 92%;
+  height: 150px;
+  padding: 0 4%;
+}
+#content .content-main ul.content-main-left li .article p {
+  overflow: hidden;
+  width: 100%;
+  height: 90px;
+  text-indent: 2em;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 1px #ddd;
+}
+#content .content-main ul.content-main-left li .article .more {
+  position: absolute;
+  left: 30px;
+  bottom: 15px;
+  cursor: pointer;
+}
+#content .content-main ul.content-main-left li .article .more a {
+  display: block;
+  color: #fff;
+  padding: 5px 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #bebbaa;
+  border-radius: 20px;
+}
+#content .content-main ul.content-main-left li .article .more a:hover {
+  color: #ddd;
+}
+#content .content-main ul.content-main-left li .article .comment {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+}
+#content .content-main ul.content-main-left li .article .comment a {
+  height: 30px;
+  line-height: 30px;
+  color: #999;
+}
+#content .content-main ul.content-main-left li .article .comment a span {
+  color: #f00;
+}
+#content .content-main ul.content-main-left li.right .pic {
+  left: auto;
+  right: 50px;
+}
+#content .content-main ul.content-main-left li.right .title .t {
+  margin-left: 80px;
+}
+#content .content-main ul.content-main-left li:hover {
+  top: -2px;
+  box-shadow: 2px 2px 3px #999;
+}
+/*decorate2*/
+#decorate2 {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+#decorate2 svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/*footer*/
+#footer {
+  width: 100%;
+  height: 400px;
+}
+/*# sourceMappingURL=index.css.map */
