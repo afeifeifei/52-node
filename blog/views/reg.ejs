@@ -6,59 +6,107 @@
     <meta name="Author" content="阿飞飞">
     <meta name="keywords" content="阿飞 博客 个人博客 web前端">
     <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
+
+    <!--使用layui必须引入的-->
     <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/layui/layui.js"></script>
 </head>
 <body>
+
+
     <form class="layui-form" action="">
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
-                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input id="username" type="text" name="username" required lay-verify="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
+            <div id="tip" class="layui-form-mid layui-word-aux">2-12位字符</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">密码框</label>
             <div class="layui-input-inline">
-                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <input type="password" name="password" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
-            <div class="layui-form-mid layui-word-aux">6-12位数</div>
+            <div class="layui-form-mid layui-word-aux">6-18位字符</div>
         </div>
+
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button id="submit" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button class="layui-btn" lay-submit lay-filter="afei">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
+
+
+    <script>
+        //Demo
+        layui.use('form', function(){
+            var form = layui.form;
+            var $ = layui.$;
+
+            //前端验证
+            form.verify({
+                username : function(value){
+                    //var len = value.length;
+                    //if( len<2 || len>10 )return "用户名长度不正确";
+                    //数字 字母 _ 汉字
+                    if(!/^[\d_a-z\u4e00-\u9fa5]{2,18}$/i.test(value)){
+                        return "用户名格式不正确";
+                    }
+                },
+                password : function(value){
+                    //var len = value.length;
+                    //if(len<6 || len>18)return "密码格式不正确！";
+                    //数字 字母 _!@#$%^&*()+{}[]-=,.<>?
+                    if( !/^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value) ){
+                        return "密码格式不正确"
+                    }
+                }
+            });
+
+            //监听提交
+            form.on('submit(afei)', function(data){
+                //console.log(data.field);
+                //layer.alert(JSON.stringify(data.field));
+                //console.log(data.field);
+
+                $.ajax({
+                    method : "POST",
+                    url : "/reg",
+                    data : data.field,
+                    success : function(data){
+                        //console.log(msg);
+                        layer.alert(data.msg);
+                    }
+                });
+
+                return false;
+            });
+
+            /* //失去焦点检测
+           (function(){
+
+                //console.log($("#username"));
+                let $tip = $("#tip");
+                let $username = $("#username");
+
+                $username.blur(function(){
+                    $.ajax({
+                        method : "POST",
+                        url : "/repeat",
+                        data : {username:$(this).val()},
+                        success : function(msg){
+                            $tip.html(msg);
+                        }
+                    })
+                });
+
+            })();*/
+        });
+    </script>
+
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script>
-
-    /*
-    推荐使用Layui自己的js代码来操作表单
-
-    由于我们还没接触过学习过layui，所以课程中我们使用jQuery来操作
-     */
-
-    (function(){
-
-        let $user = $(".layui-input-inline input[name=username]"),
-            $password = $('.layui-input-inline input[name=password]'),
-            $submit = $("#submit"),
-            $reset = $("#reset")
-        ;
-
-        console.log($user);
-        console.log($password);
-        console.log($submit);
-        console.log($reset);
-
-
-    })();
-
-</script>
 </html>
 
 
