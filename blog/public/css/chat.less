@@ -1,0 +1,108 @@
+body{
+    background-color: #777;
+}
+
+html,body{
+    overflow: hidden;
+    width: 100%;
+    min-width: 400px;
+    height: 100%;
+    user-select: none;
+}
+
+//聊天主窗口window
+#window{
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    bottom: 30px;
+    width: 400px;
+    margin-left: -200px;
+    border-radius: 20px;
+    //border: 1px solid red;
+    transform: translate3d(0,0,0);
+    //top
+    .top{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #999;
+        font-family: "楷体";
+    }
+    //content
+    .content{
+        overflow: hidden;
+        position: absolute;
+        top: 40px;
+        bottom: 50px;
+        background-color: rgba(255,255,255,.5);
+        width: 100%;
+        //c-main
+        .c-main {
+            overflow: auto;
+            width: 385px;
+            height: 100%;
+            font-size: 0;
+            //左右样式
+            .char{
+                margin: 15px 20px 0;
+                .char-content{
+                    width: auto;
+                    height: auto;
+                    padding: 10px 15px;
+                    background-color: rgb(255, 255, 255, .8);
+                    color: #444;
+                    font-size: 14px;
+                    line-height: 18px;
+                    text-shadow: 2px 2px 1px #ccc;
+                    transition: width .2s,height .2s;
+                }
+                &:after{
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 0;
+                    clear: both;
+                }
+            }
+            .chatLeft .char-content {
+                float: left;
+                border-radius: 0 20px 20px 20px;
+            }
+            .chatRight .char-content {
+                float: right;
+                border-radius: 20px 0 20px 20px;
+            }
+        }
+    }
+    //bottom
+    .bottom{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background-color: #fff;
+        line-height: 50px;
+        text-indent: 20px;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
