@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>阿飞的个人博客</title>
+    <meta name="Author" content="阿飞飞">
+    <meta name="keywords" content="阿飞 博客 个人博客 web前端">
+    <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <!--背景-->
+    <div id="bg">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+    
+    <%if(msg){%>
+        <%= msg %>
+    
+        <p>假装这里有很多用户的相关操作和信息</p>
+    <%}else{%>
+        请登录，5秒后返回 <a href="/login">登录页面</a>
+        <script>
+            setTimeout(() => {
+                location.href = "/login";
+            },5000);
+        </script>
+    <%}%>
+
+
+    <script src="/js/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

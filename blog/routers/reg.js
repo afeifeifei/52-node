@@ -24,14 +24,20 @@ module.exports = function(req,res){
             if ( data ){
                 res.send({code : 0, msg : "用户名已经存在"});
             }else{
-                //如果不存在用户名，添加到数据库
-                user.create(req.body)
-                    .then(()=>{
-                        res.send({code : 1, msg : "注册成功"});
-                    })
-                    .catch(()=>{
-                        res.send({code : 0, msg : "服务器异常，请重试~"});
-                    });
+                //如果不存在用户名，先检测两次密码是否一致
+                if ( req.body.password !== req.body.password2 ){
+                    //两次密码不一致，返回前端信息
+                    res.send({code:0,msg:"两次密码不一致"});
+                } else{
+                    //两次密码一致 添加到数据库
+                    user.create(req.body)
+                        .then(()=>{
+                            res.send({code : 1, msg : "注册成功"});
+                        })
+                        .catch(()=>{
+                            res.send({code : 0, msg : "服务器异常，请重试~"});
+                        });
+                }
             }
         })
         //捕捉错误
