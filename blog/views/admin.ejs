@@ -1,0 +1,221 @@
+
+
+<%#引入ejs模板%>
+<%- include("part/header",{title:"个人中心",css:["index"],js:["part/title"],layui:true})%>
+<%- include("part/canvas")%>
+
+<style>
+    #usercenter .photo {
+        position: relative;
+        top: 10px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url("/photo/<%=userInfo.photo%>") center center/cover;
+    }
+</style>
+<link rel="stylesheet" href="/css/usercenter.css">
+<div id="usercenter">
+    <!--//导航条-->
+    <ul class="layui-nav layui-bg-cyan">
+        <li class="layui-nav-item"><a href="/">返回首页</a></li>
+        <%if(username==="admin"){%>
+            <li class="layui-nav-item"><a href="/admin">管理员界面</a></li>
+        <%}%>
+        <li class="user">Hi~ <span style="font-weight: bolder"><%=username%></span><i class="photo"></i>，<a href="/logout">退出登录</a></li>
+    </ul>
+
+    <!--管理栏目-->
+    <div class="layui-tab layui-tab-brief layui-bg-gray">
+        <ul class="layui-tab-title">
+            <li class="layui-this">用户管理</li>
+            <li>文章管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-input-inline">
+                    <input type="text" name="search" required placeholder="请输入 搜索 关键词" autocomplete="off" class="layui-input" id="user-input" style="width: 250px">
+                </div>
+                <div class="layui-btn" id="user-btn">查询</div>
+                <table class="layui-table" id="user-table">
+                    <colgroup>
+                        <col width="250">
+                        <col width="100">
+                        <col width="100">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>注册事件</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-input-inline">
+                    <input type="text" name="search" required placeholder="请输入 标题/分类/内容 关键词" autocomplete="off" class="layui-input" id="article-input" style="width: 250px">
+                </div>
+                <div class="layui-btn" id="article-btn">查询</div>
+                <table class="layui-table" id="article-table">
+                    <colgroup>
+                        <col width="250">
+                        <col width="100">
+                        <col width="100">
+                        <col width="100">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>作者</th>
+                            <th>发表时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    layui.use(['element',"form","layedit","inputTags","upload"],function(){
+        //var element = layui.element;
+    });
+
+    //文章管理
+    (function(){
+        var $searchBtn = $("#article-btn")
+            ,$searchInput = $("#article-input")
+            ,$tbody = $("#article-table tbody")
+        ;
+        //查找按钮的点击
+        $searchBtn.click(function(){
+            let val = $searchInput.val();
+
+            $.ajax({
+                method : "POST"
+                ,url : "/admin/search"
+                ,data : {keyword:val}
+                ,success : function(data){
+                    if ( data.code === 1 ){
+                        append(data.data);
+                    } else{
+                        layer.alert(data.msg,function(){
+                            layer.close(layer.index);
+                        });
+                    }
+                }
+            });
+        });
+
+        //删除按钮添加事件
+        function append(data){
+            var html = "";
+            data.forEach(v=>{
+                console.log(v);
+                html += `<tr><td><a href="/article/${v._id}">${v.title}</a></td><td>${v.author.username}</td><td>${new Date(v.date)}</td><td><div class="layui-btn delete">删除</div></td></tr>`;
+            });
+            $tbody.append(html);
+
+            var $delete = $tbody.find(".delete");
+            $delete.each(function(i){$(this).data("_id",data[i])})
+            $delete.click(function(){
+                var _id = $(this).data("_id");
+                var $this = $(this);
+                $.ajax({
+                    method : "post",
+                    url : "/delete",
+                    data : {_id},
+                    success:function(data){
+                        if ( data.code === 1 ){
+                            $this.parent().parent().remove();
+                        } else{
+                            layer.alert(data.msg,function(){
+                                layer.close(layer.index);
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
+    })();
+
+    //用户管理
+    (function(){
+        var $searchBtn = $("#user-btn")
+            ,$searchInput = $("#user-input")
+            ,$tbody = $("#user-table tbody")
+        ;
+        //查找按钮的点击
+        $searchBtn.click(function(){
+            let val = $searchInput.val();
+
+            $.ajax({
+                method : "POST"
+                ,url : "/admin/usersearch"
+                ,data : {keyword:val}
+                ,success : function(data){
+                    if ( data.code === 1 ){
+                        append(data.data);
+                    } else{
+                        layer.alert(data.msg,function(){
+                            layer.close(layer.index);
+                        });
+                    }
+                }
+            });
+        });
+
+        //删除按钮添加事件
+        function append(data){
+            var html = "";
+            data.forEach(v=>{
+                html += `<tr><td>${v.username}</td><td>${new Date(v.date)}</td><td><div class="layui-btn delete">删除</div></td></tr>`;
+            });
+            $tbody.append(html);
+
+            var $delete = $tbody.find(".delete");
+            $delete.each(function(i){$(this).data("_id",data[i])})
+            $delete.click(function(){
+                var _id = $(this).data("_id");
+                var $this = $(this);
+                $.ajax({
+                    method : "post",
+                    url : "/admin/delete",
+                    data : {_id},
+                    success:function(data){
+                        if ( data.code === 1 ){
+                            $this.parent().parent().remove();
+                        } else{
+                            layer.alert(data.msg,function(){
+                                layer.close(layer.index);
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
+    })();
+</script>
+
+
+<%#引入ejs模板代码%>
+<%- include("part/footer")%>
+
+
+
+
+
+
+
+
+

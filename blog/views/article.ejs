@@ -1,0 +1,157 @@
+<%#引入ejs模板代码%>
+<%- include("part/header",{title:"阿飞的个人博客",css:["index"],js:["part/title"],layui:true})%>
+<%- include("part/canvas")%>
+<%- include("part/menu")%>
+
+
+<%if(code===0){%>
+    <p><%=msg%></p>
+    5秒后返回 <a href="/">首页</a>
+    <script>
+        setTimeout(() => {
+            location.href = "/";
+        },5000);
+    </script>
+<%}else{%>
+
+<style>
+    #article {
+        width: 1000px;
+        margin: 0 auto;
+        padding-top: 100px;
+    }
+</style>
+<div id="article">
+    <div class="title">
+        标题：<%=data.title%>
+    </div>
+    <div class="author">
+        作者：<%=data.author.username%>
+    </div>
+    <div class="time">
+        发表时间：<%=data.date%>
+    </div>
+    <div class="content">
+        <%-data.content%>
+    </div>
+    <div id="comment">
+
+        <div class="comment-show">
+            <h2>评论</h2>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="50">
+                    <col width="250">
+                    <col width="50">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>昵称</th>
+                        <th>评论</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%commentData.forEach(v=>{%>
+                        <tr>
+                            <td><%=v.author.username%></td>
+                            <td><%=v.content%></td>
+                            <td><div class="layui-btn delete" data-id="<%=v._id%>">删除</div></td>
+                        </tr>
+                    <%});%>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comment-add">
+            <h5>发表评论</h5>
+            <form class="layui-form" action="">
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block" style="margin-left: 0">
+                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block"style="margin-left: 0">
+                        <button class="layui-btn" lay-submit lay-filter="add">立即发表</button>
+                    </div>
+                </div>
+            </form>
+
+            <!--引入layui的模块代码-->
+            <script src="/js/index-layui.js"></script>
+            <!--当前页面的模块代码-->
+            <script>
+
+                var articleId = location.href.match(/[\da-z]+$/ig)[0];
+                //Demo
+                layui.use('form', function(){
+
+
+                    var form = layui.form;
+
+                    //监听提交
+                    form.on('submit(add)', function(data){
+                        var postData = {
+                            desc : data.field.desc
+                            ,articleId
+                        }
+                        $.ajax({
+                            method : "POST"
+                            ,url : "/comment"
+                            ,data:postData
+                            ,success:function(data){
+                                if ( data.code === 1 ){
+                                    layer.alert(data.msg,function(){
+                                        location.reload();
+                                    });
+                                } else{
+                                    layer.alert(data.msg,function(){
+                                        layer.close(layer.index);
+                                    });
+                                }
+                            }
+                        })
+
+                        return false;
+                    });
+                });
+
+                //删除代码
+                (function(){
+                    var $delete = $("#comment .delete");
+
+                    $delete.click(function(){
+                        //console.log($(this).data("id"));
+                        $.ajax({
+                            method : "post"
+                            ,url : "/comment/delete"
+                            ,data : {
+                                commentId : $(this).data("id")
+                                ,articleId
+                            }
+                            ,success:function(data){
+                                if ( data.code === 1 ){
+                                    layer.alert(data.msg,function(){
+                                        location.reload();
+                                    });
+                                } else{
+                                    layer.alert(data.msg,function(){
+                                        layer.close(layer.index);
+                                    });
+                                }
+                            }
+                        });
+                    });
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+
+<%}%>
+
+
+
+<%#引入ejs模板代码%>
+<%- include("part/footer")%>

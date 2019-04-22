@@ -1,0 +1,496 @@
+
+
+<%#引入ejs模板%>
+<%- include("part/header",{title:"个人中心",css:["index"],js:["part/title"],layui:true})%>
+<%- include("part/canvas")%>
+
+
+<%if(_id){%>
+    <%# 用户已经登录%>
+    &nbsp;
+    <style>
+        #usercenter .photo {
+            position: relative;
+            top: 10px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url("/photo/<%=userInfo.photo%>") center center/cover;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/usercenter.css">
+    <div id="usercenter">
+        <!--//导航条-->
+        <ul class="layui-nav layui-bg-cyan">
+            <li class="layui-nav-item"><a href="/">返回首页</a></li>
+            <li class="layui-nav-item layui-this"><a href="javascript:">个人中心</a></li>
+            <%if(username==="admin"){%>
+                <li class="layui-nav-item"><a href="/admin">管理员界面</a></li>
+            <%}%>
+            <li class="user">Hi~ <span style="font-weight: bolder"><%=username%></span><i class="photo"></i>，<a href="/logout">退出登录</a></li>
+        </ul>
+
+        <!--管理栏目-->
+        <div class="layui-tab layui-tab-brief layui-bg-gray">
+            <ul class="layui-tab-title">
+                <li class="layui-this">个人信息</li>
+                <li>修改密码</li>
+                <li>发表文章</li>
+                <li>管理文章</li>
+                <li>上传头像</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <form class="layui-form">
+                        <table class="layui-table info">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="60%">
+                                <col width="20%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>栏目</th>
+                                    <th>值</th>
+                                    <th>修改</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>用户名</td>
+                                    <td class="info-content"><%=username%></td>
+                                </tr>
+                                <tr>
+                                    <td>性别</td>
+                                    <td class="info-content">
+                                        <div class="show"><%=userInfo.sex||"保密"%></div>
+                                        <div class="hide" style="display: none">
+                                            <div class="layui-form-item">
+                                                <!--<label class="layui-form-label">单选框</label>-->
+                                                <div class="layui-input-block">
+                                                    <input type="radio" name="sex" value="男" title="男">
+                                                    <input type="radio" name="sex" value="女" title="女">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="update layui-btn">修改</div></td>
+                                </tr>
+                                <tr>
+                                    <td>年龄</td>
+                                    <td class="info-content">
+                                        <div class="show"><%=userInfo.age||"保密"%></div>
+                                        <div class="hide" style="display: none">
+                                            <div class="layui-form-item">
+                                                <!--<label class="layui-form-label">输入框</label>-->
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="age" lay-verify="age" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="update layui-btn">修改</div></td>
+                                </tr>
+                                <tr>
+                                    <td>邮箱</td>
+                                    <td class="info-content">
+                                        <div class="show"><%=userInfo.email||"保密"%></div>
+                                        <div class="hide" style="display: none">
+                                            <div class="layui-form-item">
+                                                <!--<label class="layui-form-label">输入框</label>-->
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="email" lay-verify="mail" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="update layui-btn">修改</div></td>
+                                </tr>
+                                <tr>
+                                    <td>手机号</td>
+                                    <td class="info-content">
+                                        <div class="show"><%=userInfo.tel||"保密"%></div>
+                                        <div class="hide" style="display: none">
+                                            <div class="layui-form-item">
+                                                <!--<label class="layui-form-label">输入框</label>-->
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="tel" lay-verify="tel" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="update layui-btn">修改</div></td>
+                                </tr>
+                                <tr>
+                                    <td>个性签名</td>
+                                    <td class="info-content">
+                                        <div class="show"><%=userInfo.status||"保密"%></div>
+                                        <div class="hide" style="display: none">
+                                            <div class="layui-form-item">
+                                                <!--<label class="layui-form-label">输入框</label>-->
+                                                <div class="layui-input-inline">
+                                                    <input value="<%=userInfo.status||"保密"%>" type="text" name="status" placeholder="请输入个性签名" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="update layui-btn">修改</div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="layui-btn" lay-submit lay-filter="update">保存修改</button>
+                    </form>
+                </div>
+                <div class="layui-tab-item">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">原密码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="password" required lay-verify="password" placeholder="请输入原密码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">6-18位字符</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">新密码</label>
+                            <div class="layui-input-inline">
+                                <input id="reg-password" type="password" name="newpassword" required lay-verify="password" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">6-18位字符</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">确认新密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password2" required lay-verify="password2" placeholder="再次输入新密码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">再次输入密码</div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="resetpwd">确认修改</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-tab-item">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" required placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分类</label>
+                            <div class="tags" id="tags" style="margin:40px 111px;">
+                                <input type="text" name="" id="inputTags" placeholder="回车生成标签" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">内容</label>
+                            <div class="layui-input-block" style="background-color: #fefefe">
+                                <textarea id="article" style="display: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="article">发表文章</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-input-inline">
+                        <input type="text" name="search" required placeholder="请输入 标题/分类/内容 关键词" autocomplete="off" class="layui-input" id="search-input" style="width: 250px">
+                    </div>
+                    <div class="layui-btn" id="search-btn">查询</div>
+                    <table class="layui-table" id="article-table">
+                        <colgroup>
+                            <col width="250">
+                            <col width="100">
+                            <col width="100">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>标题</th>
+                                <th>发表时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">
+                    <button type="button" class="layui-btn" id="upload">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+            //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+            layui.use(['element',"form","layedit","inputTags","upload"], function(){
+                //选项卡
+                var element = layui.element;
+
+                //富文本
+                var layedit = layui.layedit;
+                var index = layedit.build('article'); //建立编辑器
+
+                //标签
+                var inputTags = layui.inputTags;
+                inputTags.render({
+                    elem:'#inputTags',
+                    content: [],
+                    aldaBtn: false
+                });
+
+                //上传头像
+                var upload = layui.upload;
+                var uploadInst = upload.render({
+                    elem: '#upload' //绑定元素
+                    ,url: '/upload/photo' //上传接口
+                    ,done: function(data){
+                        if ( data.code === 1 ){
+                            layer.alert(data.msg,function(){
+                                location.reload();
+                            });
+                        } else{
+                            layer.alert(data.msg,function(){
+                                layer.close(layer.index);
+                            });
+                        }
+                    }
+                });
+
+                //表单
+                var form = layui.form;
+                //前端验证
+                form.verify({
+                    age : function(value){
+                        if(value){
+                            var intValue = parseInt(value);
+                            if ( value != intValue )return "年龄不正确";
+                        }
+                    }
+                    ,tel : function(value){
+                        if ( value ){
+                            if( !/^1[345678]\d{9}$/.test(value) )return "手机号格式不正确";
+                        }
+                    }
+                    ,mail : function(value){
+                        if(value){
+                            if(!/^[\da-z_]+@[\da-z]+(\.[a-z]+)+$/i.test(value))return "邮箱格式不正确";
+                        }
+                    },
+                    password : function(value){
+                        //var len = value.length;
+                        //if(len<6 || len>18)return "密码格式不正确！";
+                        //数字 字母 _!@#$%^&*()+{}[]-=,.<>?
+                        if( !/^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value) ){
+                            return "密码格式不正确！"
+                        }
+                    },
+                    password2 : function(value){
+                        //获取password框的value
+                        let val = $("#reg-password").val();
+                        //console.log(val);
+                        //和确认密码框的value做比较
+                        if(value !== val){
+                            return "两次密码输入不一致！";
+                        }
+                    }
+                });
+                //监听个人信息修改
+                form.on('submit(update)', function(data){
+                    //console.log(data.field);
+                    var postData = {
+                        age : data.field.age-0
+                        ,sex : data.field.sex || ""
+                        ,email : data.field.email
+                        ,tel : data.field.tel
+                        ,status : data.field.status
+                    };
+    
+                    $.ajax({
+                        method : "POST"
+                        ,url : "/update"
+                        ,data : postData
+                        ,success:function(data){
+                            if ( data.code === 1 ){
+                                layer.alert(data.msg,function(){
+                                    location.reload();
+                                });
+                            } else{
+                                layer.alert(data.msg,function(){
+                                    layer.close(layer.index);
+                                });
+                            }
+                        }
+                    });
+    
+    
+    
+                    return false;
+                });
+                //监听重置密码
+                form.on('submit(resetpwd)', function(data){
+                    //console.log(data.field);
+                    var postData = {
+                        oldpwd : data.field.password
+                        ,newpwd : data.field.newpassword
+                    };
+    
+                    $.ajax({
+                        method : "POST"
+                        ,url : "/resetpwd"
+                        ,data : postData
+                        ,success:function(data){
+                            if ( data.code === 1 ){
+                                layer.alert(data.msg,function(){
+                                    location.reload();
+                                });
+                            } else{
+                                layer.alert(data.msg,function(){
+                                    layer.close(layer.index);
+                                });
+                            }
+                        }
+                    });
+    
+    
+    
+                    return false;
+                });
+                //监听文章发表
+                form.on("submit(article)",function(data){
+                    var $tags = $("#tags span em"),
+                        $content = $("#article");
+
+                    var postData = {
+                        title : data.field.title
+                        ,tags : []
+                        ,content : layedit.getContent(index)
+                    };
+                    $tags.each(function(){postData.tags.push($(this).text())});
+
+                    $.ajax({
+                        method : "POST"
+                        ,url : "/article"
+                        ,data : postData
+                        ,success:function(data){
+                            if ( data.code === 1 ){
+                                layer.alert(data.msg,function(){
+                                    location.reload();
+                                });
+                            } else{
+                                layer.alert(data.msg,function(){
+                                    layer.close(layer.index);
+                                });
+                            }
+                        }
+                    })
+
+
+                    return false;
+                });
+            });
+        </script>
+    <script>
+        //修改按钮的点击
+        (function(){
+            var $update = $("#usercenter table.info .update");
+            $update.click(function(){
+                var $content = $(this).parent().siblings(".info-content");
+                $content.find(".show").toggle();
+                $content.find(".hide").toggle();
+            });
+        })();
+        //文章管理
+        (function(){
+            var $searchBtn = $("#search-btn")
+                ,$searchInput = $("#search-input")
+                ,$tbody = $("#article-table tbody")
+            ;
+
+            //查找按钮的点击
+            $searchBtn.click(function(){
+                let val = $searchInput.val();
+
+                $.ajax({
+                    method : "POST"
+                    ,url : "/search"
+                    ,data : {keyword:val}
+                    ,success : function(data){
+                        if ( data.code === 1 ){
+                            append(data.data);
+                        } else{
+                            layer.alert(data.msg,function(){
+                                layer.close(layer.index);
+                            });
+                        }
+                    }
+                });
+            });
+
+            //删除按钮添加事件
+            function append(data){
+                var html = "";
+                data.forEach(v=>{
+                    html += `<tr><td><a href="/article/${v._id}">${v.title}</a></td><td>${new Date(v.date)}</td><td><div class="layui-btn delete">删除</div></td></tr>`;
+                });
+                $tbody.append(html);
+
+                var $delete = $tbody.find(".delete");
+                $delete.each(function(i){$(this).data("_id",data[i])})
+                $delete.click(function(){
+                    var _id = $(this).data("_id");
+                    var $this = $(this);
+                    $.ajax({
+                        method : "post",
+                        url : "/delete",
+                        data : {_id},
+                        success:function(data){
+                            if ( data.code === 1 ){
+                                $this.parent().parent().remove();
+                            } else{
+                                layer.alert(data.msg,function(){
+                                    layer.close(layer.index);
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+
+        })();
+    </script>
+
+
+<%}else{%>
+    请登录，5秒后返回 <a href="/">首页</a>
+    <script>
+        setTimeout(() => {
+            location.href = "/";
+        },5000);
+    </script>
+<%}%>
+
+
+<%#引入ejs模板代码%>
+<%- include("part/footer")%>
+
+
+
+
+
+
+
+
+

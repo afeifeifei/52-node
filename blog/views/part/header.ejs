@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <meta name="Author" content="阿飞飞">
+    <meta name="keywords" content="阿飞 博客 个人博客 web前端">
+    <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
+    <link rel="stylesheet" href="/css/reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <%css.forEach((v)=>{%>
+        <link rel="stylesheet" href="/css/<%=v%>.css">
+    <%})%>
+
+    <%js.forEach((v)=>{%>
+        <script src="/js/<%=v%>.js"></script>
+    <%})%>
+
+    <%if(layui){%>
+        <link rel="stylesheet" href="/layui/css/layui.css">
+        <script src="/layui/layui.js"></script>
+    <%}%>
+</head>
+<body>
