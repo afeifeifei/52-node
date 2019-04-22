@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>阿飞的个人博客</title>
+    <title>个人中心</title>
     <meta name="Author" content="阿飞飞">
     <meta name="keywords" content="阿飞 博客 个人博客 web前端">
     <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
@@ -15,8 +15,8 @@
         <canvas id="bg-canvas"></canvas>
     </div>
     
-    <%if(msg){%>
-        <%= msg %>
+    <%if(_id){%>
+        欢迎您，<%= username %>
     
         <p>假装这里有很多用户的相关操作和信息</p>
     <%}else{%>

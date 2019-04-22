@@ -5,11 +5,14 @@ const user = require("../model/user");
 module.exports = function(req,res){
 
     //console.log(req.session.goudan);
+    console.log(req.session.userInfo);
+
+
     let data = {};
-    if ( req.session.goudan ){
-        data = {msg:"登陆成功"}
+    if ( req.session.userInfo ){
+        data = req.session.userInfo;
     } else{
-        data = {msg:null}
+        data = {_id:null}
     }
 
     res.render("usercenter",data);

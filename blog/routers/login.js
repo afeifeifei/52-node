@@ -33,7 +33,9 @@ module.exports = function(req,res){
                     //res.cookie("_id",data._id,{maxAge:1000*60*60});
 
                     //登录成功之后，标识该用户已经登录
-                    req.session.goudan = true;
+                    //req.session.goudan = true;
+                    //再存一个session信息，用来存储登录的是谁
+                    req.session.userInfo = data;
 
                     //密码正确
                     res.send({code:1,msg:"登录成功"});

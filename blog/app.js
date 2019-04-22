@@ -17,7 +17,7 @@ mongoose
 
 //创建app
 let app = express();
-app.listen(6549);
+app.listen(4561);
 
 
 //设置session参数
@@ -26,7 +26,7 @@ app.use(session({
     ,rolling:true //只要用户和后端有交互（访问页面，跳转页面，ajax……），刷新存储时间
     ,resave:false //是否每次请求都重新存储session数据
     ,saveUninitialized:false //初始值
-    ,cookie : {maxAge:1000*60*10} //设置session过期时间
+    ,cookie : {maxAge:1000*30} //设置session过期时间
     ,store : new mongooseSession({
         url : "mongodb://localhost:27017/blog"
     })//不设置store是服务器内存中存储session信息，我们可以通过设置store讲session数据存到数据库
