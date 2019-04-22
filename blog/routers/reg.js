@@ -31,7 +31,10 @@ module.exports = function(req,res){
                 } else{
                     //两次密码一致 添加到数据库
                     user.create(req.body)
-                        .then(()=>{
+                        .then((data)=>{
+                            //注册成功，添加session
+                            req.session.userInfo = data;
+
                             res.send({code : 1, msg : "注册成功"});
                         })
                         .catch(()=>{

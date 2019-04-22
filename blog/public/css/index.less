@@ -26,7 +26,7 @@ body{
 #menu{
     overflow: hidden;
     position: fixed;
-    z-index:999;
+    z-index:99;
     top: 50px;
     right: 50px;
     width: 30px;
@@ -114,6 +114,37 @@ body{
         }
         .menu-main{
             width: 300px;
+        }
+    }
+
+    //登录注册弹窗
+    .menu-sign{
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.8);
+
+        .sign-content{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 500px;
+            height: 300px;
+
+            .sign-center-close{
+                position: absolute;
+                top: 17px;
+                right: 17px;
+                font-size: 30px;
+                color: #000;
+                cursor: pointer;
+            }
         }
     }
 }

@@ -1,191 +1,162 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <title>阿飞的个人博客</title>
-    <meta name="Author" content="阿飞飞">
-    <meta name="keywords" content="阿飞 博客 个人博客 web前端">
-    <meta name="description" content="你好鸭~这里是阿飞飞的个人博客！欢迎大家和我一起交流鸭~">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/index.css">
-</head>
-<body>
-    <!--背景-->
-    <div id="bg">
-        <canvas id="bg-canvas"></canvas>
-    </div>
-    <!--右上角菜单-->
-    <div id="menu">
-        <!--开关-->
-        <div class="menu-switch">
-            <p class="line line1"></p>
-            <p class="line line2"></p>
-            <p class="line line3"></p>
-        </div>
-        <!--主内容-->
-        <div class="menu-main">
-            <ul>
-                <li><a href="">首页</a></li>
-                <li><a href="">文章</a></li>
-                <li><a href="">个人中心</a></li>
-                <li><a href="">联系</a></li>
-            </ul>
-        </div>
-    </div>
-    <!--头像-->
-    <div id="blogger">
-        <div class="pic"><a href=""></a></div>
-        <div class="name">This is Afei</div>
-    </div>
-    <!--盒子装饰-->
-    <div id="decorate">
-        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, .97)"></path>
-            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, .97)"></path>
-        </svg>
-    </div>
-    <!--内容-->
-    <div id="content">
-        <div class="content-main">
-            <ul class="content-main-left">
-                <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--盒子装饰-->
-    <div id="decorate2">
-        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, .97)"></path>
-            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, .97)"></path>
-        </svg>
-    </div>
-    <!--尾部-->
-    <div id="footer">
 
-    </div>
+<%#引入ejs模板代码%>
+<%- include("part/header",{title:"阿飞的个人博客",css:["index"],js:["part/title"],layui:true})%>
+<%- include("part/canvas")%>
+<%- include("part/menu")%>
 
-    <script src="/js/index.js"></script>
-</body>
-</html>
+<!--头像-->
+<div id="blogger">
+    <div class="pic"><a href=""></a></div>
+    <div class="name">This is Afei</div>
+</div>
+<!--盒子装饰-->
+<div id="decorate">
+    <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+        <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+        <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+        <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+        <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+        <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+        <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, .97)"></path>
+        <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, .97)"></path>
+    </svg>
+</div>
+<!--内容-->
+<div id="content">
+    <div class="content-main">
+        <ul class="content-main-left">
+            <li>
+                <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+            <li class="right">
+                <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+            <li class="right">
+                <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+            <li class="right">
+                <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
+                <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
+                    <div class="t-bg"></div>
+                    <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
+                    <p class="t t-2">发布时间：<span>2019/03/22</span></p>
+                    <p class="t t-3">浏览量：<span>8000</span></p>
+                </div>
+                <div class="article">
+                    <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                    <div class="more">
+                        <a href="">阅读全部</a>
+                    </div>
+                    <div class="comment">
+                        <a href=""><span>80</span>条评论</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--盒子装饰-->
+<div id="decorate2">
+    <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+        <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+        <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+        <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+        <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+        <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+        <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, .97)"></path>
+        <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, .97)"></path>
+    </svg>
+</div>
+
+<!--引入layui的模块代码-->
+<script src="/js/index-layui.js"></script>
+
+
+<%#引入ejs模板代码%>
+<%- include("part/footer")%>
 
 
 

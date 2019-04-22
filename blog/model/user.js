@@ -16,6 +16,14 @@ let userSchema = new Schema({
         type: String,
         required: true,
         match: /^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i
+    },
+    userInfo : {
+        sex : {type:String,enum:["男","女"]}
+        ,age : {type:Number,min:0}
+        ,email : {type:String,match : /^[\da-z_]+@[\da-z]+(\.[a-z]+)+$/i}
+        ,tel : {type:String,match : /^1[3456878]\d{9}$/}
+        ,status : {type:String,default:"这人很懒，没有签名……"}
+        ,photo : {type:String,default: "default.jpg"}
     }
 });
 
